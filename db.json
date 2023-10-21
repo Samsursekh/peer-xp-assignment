@@ -1,0 +1,100 @@
+{
+  "expenseData": [
+    {
+      "id": 1,
+      "name": "Purchased Books",
+      "category": "Books",
+      "description": "To purchase the utencils .",
+      "data": "2/4/2024",
+      "amount": 4500
+    },
+    {
+      "id": 2,
+      "name": "Party Hapens",
+      "category": "Social",
+      "description": "To give the party to the employee .",
+      "data": "1/6/2023",
+      "amount": 2900
+    },
+    {
+      "id": 3,
+      "name": "Purchased Books",
+      "category": "Books",
+      "description": "To purchase the utencils .",
+      "data": "2/4/2024",
+      "amount": 4500
+    },
+    {
+      "id": 4,
+      "name": "Party Hapens",
+      "category": "Social",
+      "description": "To give the party to the employee .",
+      "data": "1/6/2023",
+      "amount": 2900
+    },
+    {
+      "name": "",
+      "date": "",
+      "category": "Health",
+      "description": "",
+      "amount": null,
+      "id": 5
+    },
+    {
+      "name": "USA sports news",
+      "date": "2023-10-08",
+      "category": "Others",
+      "description": "We wanted to enjoy that's why we spent this amount",
+      "amount": 7800,
+      "id": 6
+    },
+    {
+      "name": "USA sports news",
+      "date": "2023-10-08",
+      "category": "Others",
+      "description": "We wanted to enjoy that's why we spent this amount",
+      "amount": 7800,
+      "id": 7
+    },
+    {
+      "name": " Laptop purchased",
+      "date": "2023-10-22",
+      "category": "Electronics",
+      "description": "I have  purchased a Laptop for office usage",
+      "amount": 60000,
+      "id": 8
+    },
+    {
+      "name": "Fees",
+      "date": "2023-10-29",
+      "category": "Education",
+      "description": "Fees paymnt for the education",
+      "amount": 4600,
+      "id": 9
+    },
+    {
+      "name": "Buy Paper",
+      "date": "2023-10-29",
+      "category": "Education",
+      "description": "Bought paper for every daya news",
+      "amount": 2500,
+      "id": 10
+    },
+    {
+      "name": "",
+      "date": "",
+      "category": "",
+      "description": "",
+      "amount": 0,
+      "id": 11
+    },
+    {
+      "name": "USA sports news",
+      "date": "2023-10-08",
+      "category": "Health",
+      "description": "some thing...........................",
+      "amount": 12212,
+      "id": 12
+    }
+  ]
+}
