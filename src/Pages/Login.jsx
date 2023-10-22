@@ -40,7 +40,7 @@ const Login = () => {
     const updatedLoginData = [...loginData, newLogin];
     setLoginData(updatedLoginData);
     localStorage.setItem('loginData', JSON.stringify(updatedLoginData));
-    navigate('/view-expense');
+    navigate('/view');
 
     console.log(updatedLoginData, "updated login data present ??")
     setFormData(initialFormData);
