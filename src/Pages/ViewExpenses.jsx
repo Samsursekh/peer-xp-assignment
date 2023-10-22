@@ -173,16 +173,16 @@ const ViewExpenses = () => {
                                                     </div>
                                                     <div className="flex justify-end">
                                                         <button
-                                                            onClick={confirmDelete}
+                                                            onClick={() => setIsDeleteConfirmationOpen(false)}
                                                             className="bg-red-500 text-white py-1 px-3 mx-1 rounded"
                                                         >
-                                                            Confirm
+                                                            No
                                                         </button>
                                                         <button
-                                                            onClick={() => setIsDeleteConfirmationOpen(false)}
-                                                            className="bg-blue-500 text-white py-1 px-3 mx-1 rounded"
+                                                            onClick={confirmDelete}
+                                                            className="bg-green-600 text-white py-1 px-3 mx-1 rounded"
                                                         >
-                                                            Cancel
+                                                            Yes, Delete!
                                                         </button>
                                                     </div>
                                                 </div>

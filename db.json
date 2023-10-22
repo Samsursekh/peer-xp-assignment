@@ -1,15 +1,6 @@
 {
   "expenseData": [
     {
-      "name": "buy cofiiee",
-      "date": "2023-10-08",
-      "category": "Health",
-      "description": "buy coffiee",
-      "amount": 1400,
-      "currentTime": "2023-10-22T12:19:43+05:30",
-      "id": 3
-    },
-    {
       "name": "Buy Stock of Google",
       "date": "2023-09-05",
       "category": "Books",
