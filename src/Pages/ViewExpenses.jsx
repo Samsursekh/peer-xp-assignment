@@ -77,36 +77,41 @@ const ViewExpenses = () => {
     return (
         <>
             {/* Navigation area */}
-            <div>
-                <div className='flex justify-end mb-4'>
-                    <div className='border-2 border-blue-500 px-4 font-bold text-blue-500 rounded-md flex items-center'>
-                        <input
-                            className='outline-none placeholder:text-blue-500'
-                            type="text"
-                            placeholder='Search by name'
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                        />
-
-                        <BsSearch />
+            <div className='p-3 border-2  border-b-0'>
+                <div className='flex justify-between'>
+                    <div className='mt-2 text-xl font-bold'>
+                        <h3>MY EXPENSE MANAGER</h3>
                     </div>
-                    <DatePicker
-                        className='outline-none placeholder:text-blue-500 border-2 mx-3 border-blue-500 px-4 py-3 font-bold text-blue-500 rounded-md'
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        dateFormat="yyyy-MM-dd"
-                        placeholderText='Filter By Date'
-                    />
+                    <div className='flex justify-end'>
+                        <DatePicker
+                            className='outline-none placeholder:text-green-600 border-2 mx-3 border-green-600 px-4 py-3 font-bold text-green-600 rounded-md'
+                            selected={selectedDate}
+                            onChange={handleDateChange}
+                            dateFormat="yyyy-MM-dd"
+                            placeholderText='Filter by Date of Expense'
+                        />
+                        <div className='border-2 mr-3 border-green-600 px-4 font-bold text-green-600 rounded-md flex items-center'>
+                            <input
+                                className='outline-none placeholder:text-green-600'
+                                type="text"
+                                placeholder='Search Expense by Name'
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
 
-                    <button
-                        className="border-2 border-green-600 px-4 font-bold bg-green-600 text-white rounded-md"
-                        onClick={openModal}
-                    >
-                        <span className='flex justify-evenly items-center'>
-                            <MdAdd className='font-bold text-3xl' />
-                            Create Expenses
-                        </span>
-                    </button>
+                            <BsSearch />
+                        </div>
+
+                        <button
+                            className="border-2 border-green-600 px-4 font-bold bg-green-600 text-white rounded-md"
+                            onClick={openModal}
+                        >
+                            <span className='flex justify-evenly items-center'>
+                                <MdAdd className='font-bold text-3xl' />
+                                New Expense
+                            </span>
+                        </button>
+                    </div>
                 </div>
 
                 {isModalOpen && (
@@ -118,20 +123,20 @@ const ViewExpenses = () => {
                 )}
             </div>
             {/* Navigation area */}
-            <div>
+            <div className='border-2 p-3 border-t-0'>
                 <table className="min-w-full border-2 border-gray-400">
                     <thead>
                         <tr className='border-2 border-gray-500 bg-gray-300'>
-                            <th className="px-6 py-3">Expense Name</th>
-                            <th className="px-6 py-3">Expense Category</th>
-                            <th className="px-6 py-3">Expense Date</th>
-                            <th className="px-6 py-3">Amount</th>
-                            <th className="px-6 py-3">Created At</th>
-                            <th className="px-6 py-3">Created By</th>
-                            <th className="px-6 py-3">Edit & Delete</th>
+                            <th className="px-6 py-3 border-2 border-gray-500"> Name</th>
+                            <th className="px-6 py-3 border-2 border-gray-500"> Category</th>
+                            <th className="px-6 py-3 border-2 border-gray-500"> Date of Expense</th>
+                            <th className="px-6 py-3 border-2 border-gray-500">Amount</th>
+                            <th className="px-6 py-3 border-2 border-gray-500">Updated At</th>
+                            <th className="px-6 py-3 border-2 border-gray-500">Created By</th>
+                            <th className="px-6 py-3 border-2 border-gray-500">Edit & Delete</th>
                         </tr>
                     </thead>
-                    {filteredExpensesByName === null || filteredExpensesByName === undefined ? ( 
+                    {filteredExpensesByName === null || filteredExpensesByName === undefined ? (
                         <tbody>
                             <tr className='border-2 border-gray-500'>
                                 <td colSpan='7' className='text-center py-4'>
@@ -147,28 +152,28 @@ const ViewExpenses = () => {
                                         ? expense.name.slice(0, 15) + "..."
                                         : expense.name}
                                     </td>
-                                    <td className="px-6 py-4">{expense.category}</td>
-                                    <td className="px-6 py-4">{expense.date}</td>
-                                    <td className="px-6 py-4">{expense.amount}</td>
-                                    <td className="px-6 py-4 text-[14px]">{moment(expense.currentTime).calendar()}</td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 border border-gray-500">{expense.category}</td>
+                                    <td className="px-6 py-4 border border-gray-500">{expense.date}</td>
+                                    <td className="px-6 py-4 border border-gray-500">{expense.amount}</td>
+                                    <td className="px-6 py-4 border border-gray-500 text-[14px]">{moment(expense.currentTime).calendar()}</td>
+                                    <td className="px-6 py-4 border border-gray-500">
                                         {/* {currentUser.map((user) => (
                                                         <div>{user.email}</div>
                                                         ))} */}
                                         {/* {currentUser[currentUser.length - 1].email} */}
                                         {currentUser ? currentUser : "ME"}
                                     </td>
-                                    <td>
+                                    <td className='border border-gray-500'>
                                         <div className='flex justify-evenly items-center'>
                                             <button>
-                                                <GrFormEdit className='text-sky-600 text-4xl' />
+                                                <GrFormEdit className='text-green-600 text-4xl' />
                                             </button>
                                             <button onClick={() => handleDelete(expense)}>
                                                 <MdDelete className='text-red-600 font-bold text-3xl' />
                                             </button>
 
                                             {isDeleteConfirmationOpen && (
-                                                <div className="fixed inset-0 flex items-center justify-center z-50">
+                                                <div className="fixed inset-0 flex items-center justify-center z-50 ">
                                                     <div className="modal-bg absolute inset-0 bg-black opacity-50"></div>
                                                     <div className="modal z-50 bg-white p-6 rounded-lg shadow-lg w-[400px]">
                                                         <div className="mb-5 text-center">

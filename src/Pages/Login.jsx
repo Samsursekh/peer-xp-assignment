@@ -96,7 +96,7 @@ const Login = () => {
 
         />
         {error && <div className="text-red-500 mb-2">{error}</div>}
-        <button className="bg-blue-500 text-white p-2 w-full rounded">
+        <button className="bg-green-600 text-white p-2 w-full rounded">
           Login
         </button>
       </form>
