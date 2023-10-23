@@ -25,7 +25,7 @@ const CreateExpense = ({ openModal, closeModal, updateExpenseData }) => {
       [name]: value,
     });
   };
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,11 +47,9 @@ const CreateExpense = ({ openModal, closeModal, updateExpenseData }) => {
       currentTime: moment().format(),
     };
 
-    axios.post('http://localhost:8000/expenseData', expenseData)
+    axios.post(`${import.meta.env.VITE_EXPENSES_DATA}`, expenseData)
       .then((res) => {
-        console.log(res.data, "Data is showing ...");
         setFormData(initialFormData);
-
         updateExpenseData(expenseData);
         closeModal();
       })

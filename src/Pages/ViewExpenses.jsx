@@ -17,9 +17,6 @@ const ViewExpenses = () => {
     const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
     const [expenseToDelete, setExpenseToDelete] = useState(null);
 
-
-    // console.log(currentUser, "Current user ..")
-
     const openModal = () => {
         setIsModalOpen(true);
     };
@@ -28,13 +25,11 @@ const ViewExpenses = () => {
         setIsModalOpen(false);
     };
 
-
     useEffect(() => {
-        let currentUserFromStorage = JSON.parse(localStorage.getItem('loginData'));
+        let currentUserFromStorage = JSON.parse(localStorage.getItem('loggedInUser'));
         setCurrentUser(currentUserFromStorage);
-        console.log(currentUserFromStorage, "currentUserFromStorage is there ???");
 
-        axios.get('http://localhost:8000/expenseData')
+        axios.get(`${import.meta.env.VITE_EXPENSES_DATA}`)
             .then((response) => {
                 setExpenseData(response.data);
             })
@@ -60,7 +55,6 @@ const ViewExpenses = () => {
     );
 
     const handleDelete = (expense) => {
-        // Open the confirmation modal and set the expense to be deleted
         setExpenseToDelete(expense);
         setIsDeleteConfirmationOpen(true);
     };
@@ -68,7 +62,7 @@ const ViewExpenses = () => {
     const confirmDelete = () => {
         const expenseId = expenseToDelete.id;
 
-        axios.delete(`http://localhost:8000/expenseData/${expenseId}`)
+        axios.delete(`${import.meta.env.VITE_EXPENSES_DATA}/${expenseId}`)
             .then(() => {
                 const updatedExpenses = expenseData.filter(expense => expense.id !== expenseId);
                 setExpenseData(updatedExpenses);
@@ -151,8 +145,8 @@ const ViewExpenses = () => {
                                     {/* {currentUser.map((user) => (
                                     <div>{user.email}</div>
                                   ))} */}
-                                    {currentUser[currentUser.length - 1].email}
-                                    {/* {currentUser ? (expense.email === currentUser.email ? "ME" : expense.email) : expense.email} */}
+                                    {/* {currentUser[currentUser.length - 1].email} */}
+                                    {currentUser ? currentUser : "ME"}
                                 </td>
                                 <td>
                                     <div className='flex justify-evenly items-center'>
