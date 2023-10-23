@@ -8,20 +8,3 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-Can anyone please reply, on what to do in that assignment?  
-
-It is written that Create Expense Form is a modal which will contain the following fields
-1. name
-2. Date
-3. Category 
-4. Description
-5. Amount
-
-but in the View they are different
-1. name
-2. Date
-3. Category 
-4. Updated at
-5. Amount
-
-**Description is not there**
