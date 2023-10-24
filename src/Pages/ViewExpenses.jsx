@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BsSearch } from "react-icons/bs";
 import { MdAdd, MdDelete } from "react-icons/md";
 import { GrEdit, GrFormEdit } from 'react-icons/gr';
+import EditExpense from './EditExpense';
 
 const ViewExpenses = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,10 @@ const ViewExpenses = () => {
     const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(false);
     const [expenseToDelete, setExpenseToDelete] = useState(null);
     // const [loader, setLoader] = useState(false);
+    // for edit
+
+    const [isEditConfirmationOpen, setIsEditConfirmationOpen] = useState(false);
+    const [expenseToEdit, setExpenseToEdit] = useState(null);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -24,6 +29,10 @@ const ViewExpenses = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
+    };
+
+    const closeModalForEdit = () => {
+        setIsEditConfirmationOpen(false);
     };
 
     useEffect(() => {
@@ -58,6 +67,41 @@ const ViewExpenses = () => {
     const handleDelete = (expense) => {
         setExpenseToDelete(expense);
         setIsDeleteConfirmationOpen(true);
+    };
+
+    const handleEdit = (expense) => {
+        console.log(expense.id, "Expense id is there???")
+        setExpenseToEdit(expense);
+        setIsEditConfirmationOpen(true);
+    };
+
+
+    const confirmEdit = (e, updatedExpense) => {
+        e.preventDefault();
+        const expenseEditId = expenseToEdit.id;
+
+        const updatedExpenseData = {
+            name: updatedExpense.name,
+            category: updatedExpense.category,
+            date: updatedExpense.date,
+            amount: updatedExpense.amount,
+        };
+
+        axios.put(`${import.meta.env.VITE_EXPENSES_DATA}/${expenseEditId}`, updatedExpenseData)
+            .then((response) => {
+                console.log('Expense updated:', response.data);
+                closeModalForEdit();
+                const updatedExpenses = expenseData.map(expense => {
+                    if (expense.id === expenseEditId) {
+                        return response.data;
+                    }
+                    return expense;
+                });
+                setExpenseData(updatedExpenses);
+            })
+            .catch((error) => {
+                console.error('Error updating expense:', error);
+            });
     };
 
     const confirmDelete = () => {
@@ -165,9 +209,20 @@ const ViewExpenses = () => {
                                     </td>
                                     <td className='border border-gray-500'>
                                         <div className='flex justify-evenly items-center'>
-                                            <button>
+                                            <button onClick={() => handleEdit(expense)}>
                                                 <GrFormEdit className='text-green-600 text-4xl' />
                                             </button>
+
+
+
+                                            {isEditConfirmationOpen && (
+                                                <EditExpense
+                                                    closeModal={closeModalForEdit}
+                                                    confirmEdit={confirmEdit}
+                                                    expenseToEdit={expenseToEdit}
+                                                />
+                                            )}
+
                                             <button onClick={() => handleDelete(expense)}>
                                                 <MdDelete className='text-red-600 font-bold text-3xl' />
                                             </button>
