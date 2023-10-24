@@ -10,13 +10,13 @@ Currently, two official plugins are available:
 
 **This is the test user Crediential to check how the website is look like**
 
- # pablo@google.com
+ # Email: pablo@google.com
  # Password: Pablo@123
 
  **Deployed Link** 
   https://6537380e13f95e175f90ed13--capable-pastelito-208904.netlify.app/
 
-  
+
 
 
 
